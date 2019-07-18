@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zack.zblog.dao.BlogDao">
+    <select id="getBlogBases" resultType="com.zack.zblog.model.BlogBase">
+    SELECT
+        A.ID,
+        A.TITLE,
+        B. NAME AS CATEGORY,
+        A.CONTENT AS SUMMARY,
+        A.UPDATE_TIME AS UPDATETIME
+    FROM
+        T_BLOG A
+    LEFT JOIN T_CATEGORY B ON B.ID = A.CATEGORY
+    </select>
+    <insert id="addBlog" parameterType="com.zack.zblog.model.Blog">
+    INSERT INTO T_BLOG (
+        TITLE,
+        CATEGORY,
+        CONTENT,
+        VIEW_CONTENT
+    )
+    VALUES
+        (#{blog.title}, #{blog.category}, #{blog.content}, #{blog.viewContent})
+    </insert>
+    <select id="isExist" parameterType="int" resultType="boolean">
+        SELECT COUNT(1) FROM T_BLOG WHERE ID = #{id}
+    </select>
+    <delete id="delBlog" parameterType="int">
+        DELETE FROM T_BLOG WHERE ID = #{id}
+    </delete>
+    <select id="getBlogById" parameterType="int" resultType="com.zack.zblog.model.Blog">
+        SELECT ID, TITLE, CATEGORY, CONTENT, VIEW_CONTENT AS viewContent FROM T_BLOG WHERE ID = #{id}
+    </select>
+    <update id="modifyBlog" parameterType="com.zack.zblog.model.Blog">
+        UPDATE T_BLOG
+        SET CATEGORY = #{blog.category},
+         TITLE = #{blog.title},
+         CONTENT = #{blog.content},
+         VIEW_CONTENT = #{blog.viewContent}
+        WHERE
+            ID = #{blog.id}
+    </update>
+</mapper>

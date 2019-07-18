@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>zBlog</title>
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/admin.css"/>
+    <link rel="stylesheet" href="../../3rd/editormd/css/editormd.min.css"/>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <ul class="navbar-nav">
+        <a class="navbar-brand">zBlog</a>
+        <li class="nav-item active">
+            <a class="nav-link" href="#">首页</a>
+        </li>
+    </ul>
+</nav>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            <ul class="nav nav nav-pills flex-column" style="text-align: center">
+                <li class="navbar-brand">
+                    zBlog控制台
+                </li>
+                <li class="nav-item">
+                    <a mid="category-menu" class="nav-link active zblog-menu" href="#">分类管理</a>
+                </li>
+                <li class="nav-item">
+                    <a mid="blog-menu" class="nav-link zblog-menu" href="#">博客管理</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">关于我</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-9 console-content" id="console">
+        </div>
+    </div>
+
+</div>
+<div id="extend">
+
+</div>
+</body>
+<script src="../../3rd/jquery-3.2.1.min.js" type="application/javascript"></script>
+<!--<script src="../../3rd/popper.js" type="application/javascript"></script>-->
+<script src="../../3rd/bootstrap.js" type="application/javascript"></script>
+<script src="../../3rd/sea-debug.js"></script>
+<script src="../../3rd/seajs-text-debug.js"></script>
+<script src="../../3rd/editormd/lib/raphael.min.js"></script>
+<script typeditormd.jse="application/javascript">
+    seajs.config({
+        base: "./",
+        alias:{
+            editormd: "../../3rd/editormd/editormd",
+            console: "../../js/admin/console"
+        }
+    });
+    var deps = [
+        "editormd",
+        "console",
+        "../../3rd/editormd/plugins/link-dialog/link-dialog",
+        "../../3rd/editormd/plugins/reference-link-dialog/reference-link-dialog",
+        "../../3rd/editormd/plugins/image-dialog/image-dialog",
+        "../../3rd/editormd/plugins/code-block-dialog/code-block-dialog",
+        "../../3rd/editormd/plugins/table-dialog/table-dialog",
+        "../../3rd/editormd/plugins/emoji-dialog/emoji-dialog",
+        "../../3rd/editormd/plugins/goto-line-dialog/goto-line-dialog",
+        "../../3rd/editormd/plugins/help-dialog/help-dialog",
+        "../../3rd/editormd/plugins/html-entities-dialog/html-entities-dialog",
+        "../../3rd/editormd/plugins/preformatted-text-dialog/preformatted-text-dialog"
+    ];
+    seajs.use(deps, function (editormd, consoleCtrl) {
+        window.editormd = editormd;
+        $(function () {
+            consoleCtrl.init();
+        });
+
+
+    });
+</script>
+
+</html>

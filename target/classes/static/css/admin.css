@@ -1,0 +1,24 @@
+#login {
+	max-width: 480px;
+	margin: auto;
+}
+
+.console-content {
+	margin: 20px;
+}
+
+.zblog-table {
+	table-layout:fixed;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+.z-buttons {
+	margin: auto auto 16px;
+}
+
+
+.z-button {
+	width: 96px;
+}
